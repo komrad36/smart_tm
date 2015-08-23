@@ -2,9 +2,7 @@ Smart Time System (smart_tm) is a smart, leap-second- and leap-day-aware,
 fast, 64-bit-capable replacement for the ctime 'tm' struct.
 
 *******************************************************************
-Smart Time System
-Kareem Omar
-Student Researcher, CSPAR - UAH Class of 2017
+Smart Time System - Kareem Omar - Student Researcher, CSPAR - UAH Class of 2017
 *******************************************************************
 
  Smart Time System is an improvement upon the ctime 'tm' struct,
