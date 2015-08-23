@@ -5,9 +5,6 @@ fast, 64-bit-capable replacement for the ctime 'tm' struct.
 Smart Time System
 Kareem Omar
 Student Researcher, CSPAR - UAH Class of 2017
-
-8/15/2015
-This program is entirely my own work.
 *******************************************************************
 
  Smart Time System is an improvement upon the ctime 'tm' struct,
