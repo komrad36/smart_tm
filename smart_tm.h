@@ -75,6 +75,7 @@ std::cout << myTime << std::endl;
 #include <fstream>
 #include <iomanip>
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -221,6 +222,11 @@ public:
 
 	// Return seconds since epoch, including fractional seconds
 	size_t toEpoch(double& fracSec) const;
+
+	// generate string outputs
+	std::string toString(const char dateSeparator='/') const;
+	std::string dateToString(const char dateSeparator='/') const;
+	std::string timeToString() const;
 
 private:
 

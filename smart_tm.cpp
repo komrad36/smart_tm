@@ -175,14 +175,30 @@ bool smart_tm::equalsNoFrac(const smart_tm& other) const {
 	return yr == other.yr && mon == other.mon && day == other.day && hr == other.hr && min == other.min && sec == other.sec;
 }
 
+std::string smart_tm::dateToString(const char dateSeparator /* ='/' */) const {
+	std::stringstream ss;
+	ss << std::setfill('0') << std::setw(4) << yr << dateSeparator
+		<< std::setw(2) << mon << dateSeparator
+		<< std::setw(2) << day;
+	return ss.str();
+
+}
+
+std::string smart_tm::timeToString() const {
+	std::stringstream ss;
+	double combinedSec = static_cast<double>(sec) + fracSec;
+	ss << std::setfill('0') << std::setw(2) << hr << ':'
+                << std::setw(2) << min << ':'
+                << ((combinedSec >= 0.0 && combinedSec < 10.0) ? "0" : "") << std::setw(0) << std::setprecision(digits) << combinedSec;
+        return ss.str();
+}
+
+std::string smart_tm::toString(const char dateSeparator /* ='/' */) const {
+	return dateToString(dateSeparator) + ' ' + timeToString();
+}
+
 std::ostream& operator<<(std::ostream& os, const smart_tm& time) {
-	double combinedSec = static_cast<double>(time.sec) + time.fracSec;
-	os << std::setfill('0') << std::setw(4) << time.yr << '/'
-		<< std::setw(2) << time.mon << '/'
-		<< std::setw(2) << time.day << ' '
-		<< std::setw(2) << time.hr << ':'
-		<< std::setw(2) << time.min << ':'
-		<< ((combinedSec >= 0.0 && combinedSec < 10.0) ? "0" : "") << std::setw(0) << std::setprecision(smart_tm::digits) << combinedSec;
+	os << time.toString();
 	return os;
 }
 
